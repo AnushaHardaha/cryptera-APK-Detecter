@@ -1,87 +1,122 @@
-# Cryptera APK Detector  
+# 🛡️ Cryptera APK Security Scanner 🚀
 
-Cryptera APK Detector is an advanced security scanner built to **detect fake banking applications** and analyze Android APK files for malicious behavior. It provides deep APK analysis, permission checks, threat intelligence integration, and machine learning-based detection, making it a complete security solution for Android apps.  
-
----
-
-## 🚀 Features  
-- **APK Analysis** – Manifest parsing, certificate extraction, DEX file analysis  
-- **Fake Banking App Detection** – Pattern matching & behavioral analysis  
-- **Security Scanning** – Permission checks, string analysis, obfuscation detection  
-- **Threat Intelligence** – Integration with VirusTotal & MalwareBazaar  
-- **Machine Learning Detection** – AI-powered malware classification  
-- **RESTful API** – Programmatic access to scanning services  
-- **Web Interface** – Upload & analyze APKs via simple UI  
+Cryptera is an **advanced APK security scanner** designed to detect fake banking applications and analyze Android APK files for malicious behavior. The system provides comprehensive security analysis including **permission analysis, threat intelligence, and machine learning-based detection**.
 
 ---
 
-## 🛠 Technology Stack  
+## 🌟 Features
+
+- **📦 APK Analysis**: Deep analysis of Android APK files including manifest parsing, certificate extraction, and DEX file analysis  
+- **🏦 Banking App Detection**: Specialized detection for fake banking applications using pattern matching and behavioral analysis  
+- **🔍 Security Scanning**: Comprehensive security analysis including permission analysis, string analysis, and obfuscation detection  
+- **🛠️ Threat Intelligence**: Integration with VirusTotal and MalwareBazaar for real-time threat intelligence  
+- **🤖 Machine Learning Detection**: AI-powered malware detection capabilities  
+- **🖥️ RESTful API**: Easy-to-use REST API for programmatic access  
+- **🌐 Web Interface**: User-friendly web interface for manual APK uploads and analysis  
+
+---
+
+## 💻 Technology Stack
+
 - **Backend**: Node.js, Express.js  
 - **Database**: MongoDB (optional)  
-- **Frontend**: HTML5, CSS3, JavaScript  
 - **Security**: Helmet, CORS, Rate Limiting  
 - **File Processing**: Multer, yauzl, xml2js  
-- **Threat Intel**: VirusTotal API, MalwareBazaar API  
+- **Threat Intelligence**: VirusTotal API, MalwareBazaar API  
 - **Logging**: Winston  
+- **Frontend**: HTML5, CSS3, JavaScript  
 
 ---
 
-## 📦 Prerequisites  
-- Node.js v16+  
+## ⚙️ Prerequisites
+
+- Node.js (version 16.0.0 or higher)  
 - npm (Node Package Manager)  
-- Optional: MongoDB  
-- Optional: Android SDK Build Tools  
+- Optional: MongoDB for storing scan results  
+- Optional: Android SDK Build Tools for advanced APK parsing  
 
 ---
 
-## ⚙️ Installation  
-```bash
-# Clone the repository
-git clone https://github.com/AnushaHardaha/cryptera-APK-Detecter.git
-cd cryptera-APK-Detecter
+## 📥 Installation
 
-# Install dependencies
-npm install
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/gourichouksey/cybershield.git
+   cd cybershield
+   ```
 
-# Setup environment variables
-cp .env.example .env
-# Edit .env with your API keys
+2. **Install dependencies**
 
-# Create required directories
-mkdir -p uploads logs data
----
+    ```bash
+   
+         npm install
+     ```
+3. **Configure environment variables**
+       ```bash
 
-## 🔑 Configuration  
-Create a `.env` file in the project root and add the following:  
+       cp .env .example .env
+    ```
+5. **Create required directories**
 
-```env
-# API Keys
-VIRUSTOTAL_API_KEY=your_virustotal_key_here
-MALWAREBAZAAR_API_KEY=your_malwarebazaar_key_here
-ABUSEIPDB_API_KEY=your_abuseipdb_key_here
+    ```bash
 
-# Server Config
-PORT=3000
-NODE_ENV=development
-# Development
-npm run dev
+        mkdir -p uploads logs data
+     ```
 
-# Production
-npm start
+# 🛠️ Configuration
 
-# Recommended: PM2 for production
-npm install -g pm2
-pm2 start server.js --name cryptera-apk-detector
-pm2 save
-{
-  "success": true,
-  "scanId": "uuid-here",
-  "result": {
-    "riskLevel": "high",
-    "isFake": true,
-    "confidence": 85,
-    "threats": ["Banking app impersonation detected"],
-    "recommendations": ["DO NOT INSTALL - Fake banking application"],
-    "summary": "DANGER: This APK appears malicious."
-  }
-}
+**Environment Variables**
+
+- Copy .env.example to .env and configure the following variables:
+
+- VIRUSTOTAL_API_KEY 🔑: Your VirusTotal API key (optional but recommended)
+
+- MALWAREBAZAAR_API_KEY 🔑: Your MalwareBazaar API key (optional but recommended)
+
+- ABUSEIPDB_API_KEY 🔑: Your AbuseIPDB API key (optional)
+
+- PORT 🌐: Server port (default: 3000)
+
+- NODE_ENV ⚙️: Environment (development/production)
+
+**API Keys Setup**
+
+1. VirusTotal API Key
+
+- Visit VirusTotal
+
+- Create an account and get your API key
+
+- Add it to your .env file
+
+2. MalwareBazaar API Key
+
+- Visit abuse.ch Authentication Portal
+
+- Create an account and get your API key
+
+- Add it to your .env file
+
+  # 🚀 Running the Server
+  
+**Development Mode**
+      
+  ```bash 
+              
+ npm run dev
+   ```
+**Production Mode**
+       
+  ```bash
+               
+               npm start
+   ```
+**Using PM2 (Recommended for Production)**
+     
+  ```bash 
+
+            npm install -g pm2
+            pm2 start server.js --name cybershield
+            pm2 startup
+            pm2 save
+ ```
