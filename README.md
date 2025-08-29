@@ -97,7 +97,9 @@ Cryptera is an **advanced APK security scanner** designed to detect fake banking
 
 - Add it to your .env file
 
-  # 🚀 Running the Server
+  
+
+ # 🚀 Running the Server
   
 **Development Mode**
       
@@ -121,3 +123,134 @@ Cryptera is an **advanced APK security scanner** designed to detect fake banking
             pm2 save
  ```
 
+
+# 🖥️ API Endpoints
+**Scan APK File**
+```bash
+POST /api/scan-apk
+Content-Type: multipart/form-data
+
+Body: 
+- apk: APK file (max 220MB)
+```
+**Response Example**
+
+```bash
+{
+  "success": true,
+  "scanId": "uuid-here",
+  "result": {
+    "riskLevel": "high|medium|low|minimal|critical",
+    "isFake": true,
+    "confidence": 85,
+    "threats": ["Banking app impersonation detected"],
+    "recommendations": ["DO NOT INSTALL - This appears to be a fake banking application"],
+    "summary": "DANGER: This APK appears to be a fake banking application..."
+  }
+}
+```
+
+**Health Check**
+```bash
+GET /api/health
+```
+
+**Response Example**
+```bash
+{
+  "status": "healthy",
+  "timestamp": "2025-08-27T10:30:00.000Z",
+  "services": {
+    "threatIntel": "initialized"
+  }
+}
+```
+
+
+# 📂 Usage Examples
+**Using cURL**
+```bash
+# Scan an APK file
+curl -X POST -F "apk=@sample.apk" http://localhost:3000/api/scan-apk
+
+# Check server health
+curl http://localhost:3000/api/health
+
+```
+
+**Using the Web Interface**
+
+1. Start the server
+
+2. Open your browser and navigate to the frontend HTML file
+
+3. Upload an APK file
+
+4. View the analysis results
+
+  
+  # 🛠️ Development
+**Project Structure**
+```bash
+cybershield/
+└── backend/
+    ├── services/           # Core service modules
+    │   ├── apkAnalyzer.js     # APK analysis logic
+    │   ├── securityScanner.js # Security scanning logic
+    │   ├── threatIntelligence.js # Threat intelligence integration
+    │   └── database.js        # Database operations
+    ├── uploads/            # Temporary file storage
+    ├── logs/              # Application logs
+    ├── data/              # Static data files
+    ├── server.js          # Main server file
+    ├── package.json       # Dependencies and scripts
+    └── README.md          # This file
+```
+
+**Available Scripts**
+```bash
+npm run dev      # Start in development mode with nodemon
+npm start        # Start in production mode
+npm test         # Run tests
+npm run scan     # Run standalone APK scanner
+```
+
+**Contributing**
+
+1. Fork the repository 🍴
+
+2. Create a feature branch (git checkout -b feature/amazing-feature) 🌿
+
+3. Commit your changes (git commit -m 'Add some amazing feature') ✨
+
+4. Push to the branch (git push origin feature/amazing-feature) 🚀
+
+5. Open a Pull Request 💌
+
+
+# 🔒 Security Features
+**Rate Limiting**
+
+- 10 requests per minute per IP address
+
+- Configurable rate limits for different endpoints
+
+- File Validation
+
+- Strict APK file validation
+
+**File size limits (max 220MB)**
+
+- MIME type checking
+
+**Security Headers**
+
+- Helmet.js for security headers
+
+- CORS configuration
+
+- Input validation and sanitization
+
+# 💬 Support
+
+For support and questions, please open an issue on GitHub or contact the development team.
